@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
                 tvToken.setText(SharedPrefManager.getInstance(MainActivity.this).getToken());
             }
         };
+
+        if(SharedPrefManager.getInstance(this).getToken() != null){
+            tvToken.setText(SharedPrefManager.getInstance(MainActivity.this).getToken());
+            Log.d("Ajude Mais!", SharedPrefManager.getInstance(this).getToken());
+        }
 
         registerReceiver(broadcastReceiver, new IntentFilter(MyFirebaseInstanceIDService.TOKEN_BROADCAST));
     }
