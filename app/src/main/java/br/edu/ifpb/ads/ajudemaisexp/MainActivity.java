@@ -9,6 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import br.edu.ifpb.ads.ajudemaisexp.fcm.MyFirebaseInstanceIDService;
+import br.edu.ifpb.ads.ajudemaisexp.storage.SharedPrefManager;
+
+/**
+ *
+ */
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvToken;
@@ -31,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
         if(SharedPrefManager.getInstance(this).getToken() != null){
             tvToken.setText(SharedPrefManager.getInstance(MainActivity.this).getToken());
-            Log.d("Ajude Mais!", SharedPrefManager.getInstance(this).getToken());
         }
 
         registerReceiver(broadcastReceiver, new IntentFilter(MyFirebaseInstanceIDService.TOKEN_BROADCAST));

@@ -1,7 +1,6 @@
-package br.edu.ifpb.ads.ajudemaisexp;
+package br.edu.ifpb.ads.ajudemaisexp.fcm;
 
 import android.content.Intent;
-import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
@@ -10,9 +9,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.DataOutputStream;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
+
+import br.edu.ifpb.ads.ajudemaisexp.storage.SharedPrefManager;
 
 
 /**
@@ -50,14 +51,17 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
      */
     private void sendToken(String token) {
         JSONObject doador = new JSONObject();
+        JSONObject tokenFCM = new JSONObject();
         try {
+            tokenFCM.put("token", token);
             doador.put("nome", "Franck");
-            doador.put("tokenFCM", token);
+            doador.put("tokenFCM", tokenFCM);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        executePost("http://192.168.0.122:8080/doador", doador);
+        executePost("http://192.168.0.110:8080/doador", doador);
 
     }
 

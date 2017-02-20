@@ -1,4 +1,4 @@
-package br.edu.ifpb.ads.ajudemaisexp;
+package br.edu.ifpb.ads.ajudemaisexp.storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
