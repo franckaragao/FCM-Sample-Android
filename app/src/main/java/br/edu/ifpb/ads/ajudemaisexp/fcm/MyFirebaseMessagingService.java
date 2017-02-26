@@ -16,10 +16,15 @@ import com.google.firebase.messaging.RemoteMessage;
 import br.edu.ifpb.ads.ajudemaisexp.R;
 
 /**
+ * Classe responsável por receber notificações do firebase FCM.
+ * Além de receber notificações do FCM, esta classe exibe as notificações
+ * recidas de forma visual para o usuário do aplicativo.
+ *
  * Created by Franck Aragão on 2/9/17.
  */
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService{
+
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {

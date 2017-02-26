@@ -17,6 +17,9 @@ import br.edu.ifpb.ads.ajudemaisexp.storage.SharedPrefManager;
 
 
 /**
+ * Classe encapsula operações necessárias para registro e atualização
+ * de token do FCM e envio para servidor.
+ *
  * Created by Franck Aragão on 2/9/17.
  */
 
@@ -38,6 +41,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     }
 
     /**
+     * Guarda token atualizado em registro de configurações do aplicativo
      *
      * @param token
      */
@@ -46,6 +50,10 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     }
 
     /**
+     * Envia token atualizado para servidor.
+     *
+     * Método apenas de exemplo! é enviado a representação de um doador
+     * com apenas um nome junto ao token.
      *
      * @param token
      */
