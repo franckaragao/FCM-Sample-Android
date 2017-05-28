@@ -16,9 +16,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import br.edu.ifpb.ads.ajudemaisexp.R;
 
 /**
- * Classe responsável por receber notificações do firebase FCM.
- * Além de receber notificações do FCM, esta classe exibe as notificações
- * recidas de forma visual para o usuário do aplicativo.
+ * Class get Notification from FCM
  *
  * Created by Franck Aragão on 2/9/17.
  */
@@ -50,10 +48,5 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         mNotificationManager.notify(001, mBuilder.build());
-    }
-
-    private int getNotificationIcon() {
-        boolean useWhiteIcon = (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP);
-        return useWhiteIcon ? R.drawable.ic_stat_name : R.mipmap.ic_launcher;
     }
 }

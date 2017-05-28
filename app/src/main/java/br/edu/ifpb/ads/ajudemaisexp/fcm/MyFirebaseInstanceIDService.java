@@ -1,6 +1,7 @@
 package br.edu.ifpb.ads.ajudemaisexp.fcm;
 
 import android.content.Intent;
+import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
@@ -17,8 +18,6 @@ import br.edu.ifpb.ads.ajudemaisexp.storage.SharedPrefManager;
 
 
 /**
- * Classe encapsula operações necessárias para registro e atualização
- * de token do FCM e envio para servidor.
  *
  * Created by Franck Aragão on 2/9/17.
  */
@@ -41,7 +40,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     }
 
     /**
-     * Guarda token atualizado em registro de configurações do aplicativo
+     * Storage token refreshed in shared prefs
      *
      * @param token
      */
@@ -50,26 +49,22 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     }
 
     /**
-     * Envia token atualizado para servidor.
-     *
-     * Método apenas de exemplo! é enviado a representação de um doador
-     * com apenas um nome junto ao token.
-     *
+     * send entity Person with token to save in API.
      * @param token
      */
     private void sendToken(String token) {
-        JSONObject doador = new JSONObject();
+        JSONObject person = new JSONObject();
         JSONObject tokenFCM = new JSONObject();
         try {
             tokenFCM.put("token", token);
-            doador.put("nome", "Franck");
-            doador.put("tokenFCM", tokenFCM);
+            person.put("name", "Franck");
+            person.put("tokenFCM", tokenFCM);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        executePost("http://192.168.0.110:8080/doador", doador);
+        executePost("http://192.168.0.110:8080/person", person);
 
     }
 
@@ -105,8 +100,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
             }
 
         } catch (Exception e) {
-
-            e.printStackTrace();
+            Log.e("API REQUEST", e.getMessage());
             return false;
 
         } finally {
